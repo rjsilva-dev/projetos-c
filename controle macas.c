@@ -12,15 +12,18 @@ printf("quantidade de macas:\n");
 scanf("%d", &qtd_macas);
 
 //condicao if e else
+//caso sim = if
 if (qtd_macas < 12){
     valor_total = qtd_macas * 0.30;
 
-}else
+}
+// caso nao = else
+else
 {
     valor_total = qtd_macas * 0.25;
 }
-
-printf("o valor e: %.2f", valor_total);
+// sempre colocar resultado apos "}"
+printf("o valor total: %.2f", valor_total);
 
   return 0;
 }
