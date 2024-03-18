@@ -1,6 +1,7 @@
 // as maças custam R$ 0.30 cada se forem compradas menos que uma duzia,
 // e R$ 0.25 se foirem comprada pelo menos 12 escreva um progama que leia o numero 
 // de macas e compradas e calcule e escrecva valor toalta
+#include<stdio.h>
 
 int main (){
 //definir variavel int = numero inteiro, float = numeros quebrados 
