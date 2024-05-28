@@ -1,11 +1,30 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+struct Cliente {
+	int id;
+	char nome[50];
+	char endereco[100];
+	long telefone;
+	unsigned long cpf;
+};
+
+struct Produto {
+	int id;
+	char nome[100];
+	float preco;
+	int quantidade;
+};
 
 int menuPrincipal();
 int menuCadastro();
 int menuOs();
 int menuVender();
+
+Cliente clientes[2048];
+Produto produtos[2048];
+int qtdClientes = 1;
+int qtdProdutos = 1;
 
 int main() {
     system("color 70");
@@ -67,35 +86,46 @@ int menuCadastro() {
         
         switch (opcao) {
             case 1:
-            printf("\n>> INFORMACOES DO CLIENTE <<\n");
-            printf("\nDIGITE O NOME: ");
-            scanf(" %[^\n]", nome);
-
-            printf("\nDIGITE O CPF: ");
-            scanf(" %[^\n]", cpf);
-
-            printf("\nDIGITE O TELEFONE: ");
-            scanf(" %[^\n]", telefone);
-
-            printf("\nDIGITE O ENDERECO: ");
-            scanf(" %[^\n]", endereco);
-			break;
-            
+	            printf("\n>> INFORMACOES DO CLIENTE <<\n");
+	            printf("\nDIGITE O NOME: ");
+	            scanf("%s", &clientes[qtdClientes - 1].nome);
+	
+	            printf("\nDIGITE O CPF: ");
+	            scanf("%lu", &clientes[qtdClientes - 1].cpf);
+	
+	            printf("\nDIGITE O TELEFONE: ");
+	            scanf("%ld", &clientes[qtdClientes - 1].telefone);
+	
+	            printf("\nDIGITE O ENDERECO: ");
+	            scanf("%s", &clientes[qtdClientes - 1].endereco);
+	            
+	            clientes[qtdClientes - 1].id = qtdClientes;
+	            qtdClientes++;
+				break;
 			case 2:
-            printf("\n>> INFORMACOES DOS PRODUTOS: <<\n");
-
-            printf("\nDIGITE NOME PRODUTO: ");
-            scanf(" %[^\n]", produto);
-
-            printf("\nDIGITE QUANTIDADE: ");
-            scanf(" %[^\n]", quantidade);
-
-            printf("\nDIGITE O VALOR: ");
-            scanf(" %[^\n]", valor);
-			break;
-			
+	            printf("\n>> INFORMACOES DOS PRODUTOS: <<\n");
+	
+	            printf("\nDIGITE NOME PRODUTO: ");
+	            scanf("%s", &produtos[qtdProdutos - 1].nome);
+	
+	            printf("\nDIGITE QUANTIDADE: ");
+	            scanf(" %[^\n]", quantidade);
+	
+	            printf("\nDIGITE O VALOR: ");
+	            scanf(" %[^\n]", valor);
+				break;
 			case 3:
-            printf("\n CLIENTES CADASTRADOS\n %s", nome);
+            	printf("\n CLIENTES CADASTRADOS\n");
+            	for(int x = 1; x < qtdClientes; x++) {
+            		printf("\n");
+            		printf("\nID: %d", clientes[x-1].id);
+            		printf("\nNome: %s", clientes[x-1].nome);
+	            	printf("\nCPF: %lu", (unsigned long) clientes[x-1].cpf);
+	            	printf("\nTelefone: %ld", clientes[x-1].telefone);
+	            	printf("\nEndereco: %s\n", clientes[x-1].endereco);
+				}
+				system("pause");
+				menuCadastro();
             case 5:
                 return 0;
             default:
